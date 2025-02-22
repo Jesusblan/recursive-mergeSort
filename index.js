@@ -3,11 +3,11 @@
 //sort left part
 //sort rigth part
 //do it until the array left has one element inside, si its already sorted
-//merge them in order, comparing the first element in left part and rigth part of each spliced array
+//merge them in order, comparing the first element in left part and rigth part of each spliced array with a helper function
 //CS50x Harvard lesson https://www.youtube.com/watch?v=Ns7tGNbtvV4 after a couple of hours looking for resources I can assure you this is the holy grail of merge sort explanations
 
 
-//this function will split the array recursively until it contains one element 
+//this function will split the array recursively until it contains one element and calls the merge function to merge the individual soerted elements in a new array
 function mergeSort(arr){
     if (arr.length <= 1) {
         return arr
@@ -20,3 +20,23 @@ function mergeSort(arr){
 
     return (left, rigth)
 }
+
+//this function will merge the spliced array
+function merge(left, rigth){
+    let sortedArray = []
+
+    while (left.length && rigth.length){
+        if (left[0] < rigth[0]){
+            sortedArray.push(left.shift());
+        }
+
+        else {
+            sortedArray.push(left.shift())
+        }
+    }
+
+    return [...sortedArray, ...left, ...rigth]
+}
+
+
+
